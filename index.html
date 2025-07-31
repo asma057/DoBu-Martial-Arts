@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="DoBu Martial Arts - Expert training in Jiu-jitsu, Karate, Muay Thai. Join a community focused on growth and fitness.">
+<title>DoBu Martial Arts - Homepage</title>
+
+<!-- Font Awesome CDN for icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@300;400;500&display=swap');
+
+h1, h2, h3, h4, h5, h6,
+.hero-content h2,
+.section-title,
+.intro-text h2,
+.why-card h4 {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+
+  /* Reset */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+  body {
+    font-family: 'Rajdhani', sans-serif;
+    background: #fdfdfd;
+    color: #222;
+    line-height: 1.5;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  ul {
+    list-style: none;
+  }
+
+  .skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #000;
+  color: #fff;
+  padding: 8px 12px;
+  z-index: 1000;
+  transition: top 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+
+.skip-link:focus {
+  top: 0;
+  opacity: 1;
+}
+
+
+  /* Navbar */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    padding: 1rem 3rem;
+    border-bottom: 3px solid #ff6600;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  nav .logo {
+    display: flex;
+    align-items: center;
+  }
+  nav .logo img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 12px;
+    object-fit: cover;
+    border: 3px solid #ff6600;
+  }
+  nav .logo h1 {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #111;
+    letter-spacing: 1.5px;
+  }
+  nav ul {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+  }
+  nav ul li {
+    font-weight: 600;
+    font-size: 1rem;
+    position: relative;
+  }
+  nav ul li a {
+    color: #111;
+    padding: 6px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: color 0.3s ease;
+  }
+  nav ul li a:hover {
+    color: #ff6600;
+  }
+  nav ul li.login a {
+    color: #111;
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+  /* Only icon for login */
+  nav ul li.login a span {
+    display: none;
+  }
+  nav ul li.login a:hover {
+    color: #ff6600;
+  }
+
+  .sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+  /* Hero Section */
+  .hero {
+    position: relative;
+    height: 90vh;
+    overflow: hidden;
+  }
+  .hero video {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    filter: brightness(0.4);
+    z-index: -1;
+  }
+  .hero-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 6rem;
+    max-width: 600px;
+    color: #fff;
+  }
+  .hero-content h2 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: 3px;
+  }
+  .hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    font-weight: 500;
+  }
+  .hero-content .btn {
+    background: #ff6600;
+    color: #fff;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .hero-content .btn:hover {
+    background: #cc5200;
+  }
+
+  /* Main Content */
+  main {
+    max-width: 1100px;
+    margin: 3rem auto 5rem;
+    padding: 0 2rem;
+  }
+  section {
+    margin-bottom: 4rem;
+  }
+  h3.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #111;
+    border-left: 6px solid #ff6600;
+    padding-left: 12px;
+    margin-bottom: 2rem;
+    letter-spacing: 2px;
+  }
+
+  /* Intro Section */
+.intro {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding: 80px 0; /* changed: removed 10% horizontal padding */
+  background: #fff;
+  max-width: 1100px; /* limit width */
+  margin: 0 auto; /* center horizontally */
+  box-sizing: border-box;
+}
+
+/* For image and text */
+.intro img,
+.intro-text {
+  flex: 1 1 45%;
+  max-width: 45%;  /* limit max width */
+}
+
+/* Image styling */
+.intro img {
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(255,102,0,0.3);
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.intro-text h2 {
+  position: relative;
+  font-size: 2.5rem;
+  font-weight: 700;
+  padding-left: 20px; /* create space for the line */
+  border-left: 6px solid #ff6600; /* orange line at the left */
+}
+
+/* Text container */
+.intro-text {
+  font-size: 1.15rem;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .intro {
+    flex-direction: column;
+    padding: 40px 5%;
+  }
+  .intro img,
+  .intro-text {
+    max-width: 100%;
+    flex: 1 1 100%;
+  }
+  .intro-text h2 {
+    font-size: 2rem;
+    padding-left: 12px;
+  }
+}
+
+
+  /* Why Choose Us Section */
+  .why-us {
+    text-align: center;
+  }
+  .why-us-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .why-card {
+    background: #fff;
+    border: 2px solid #ff6600;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgb(255 102 0 / 0.15);
+    padding: 1.8rem;
+    flex: 1 1 300px;
+    transition: transform 0.3s ease;
+  }
+  .why-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgb(255 102 0 / 0.3);
+  }
+  .why-card img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+  }
+  .why-card h4 {
+    color: #ff6600;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+  }
+  .why-card p {
+    color: #444;
+    font-size: 1rem;
+  }
+
+  .btn {
+  background-color: orange;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.btn:hover {
+  background-color: black;
+  color: white;
+  border-color: orange;
+}
+
+  .testimonials {
+  background: #111111de;
+  color: #fff;
+  text-align: center;
+  padding: 60px 20px;
+  position: relative;
+}
+
+.testimonials h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #ff6600;
+}
+
+.testimonial-carousel {
+  position: relative;
+  overflow: hidden;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.testimonial-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.testimonial-card {
+  flex: 0 0 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+.testimonial-card p {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.testimonial-card h4 {
+  font-weight: 600;
+  color: #ff6600;
+}
+
+.testimonial-prev,
+.testimonial-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #ff6600;
+  border: none;
+  color: #000;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  z-index: 10;
+  transition: background 0.3s ease;
+}
+
+.testimonial-prev:hover,
+.testimonial-next:hover {
+  background: #ff4d00; /* bold sporty orange */
+  color: #fff; /* white arrow inside */
+  transition: 0.3s ease;
+}
+
+
+.testimonial-prev {
+  left: 10px;
+}
+
+.testimonial-next {
+  right: 10px;
+}
+
+/* Mobile fix */
+@media (max-width: 768px) {
+  .testimonial-card {
+    padding: 10px;
+  }
+
+  .testimonial-carousel {
+    padding: 0 10px;
+  }
+
+  .testimonial-prev,
+  .testimonial-next {
+    top: 90%; /* moves buttons below the card if needed */
+    transform: translateY(-50%);
+  }
+}
+
+
+  /* Footer */
+footer {
+  background-color: #222222;
+  color: #eee;
+  padding: 2rem 1rem;
+  font-family: 'Rajdhani', sans-serif;
+  border-top: 3px solid #ff6600;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.footer-logo {
+  text-align: left;
+}
+
+.footer-logo h4 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  color: #ff6600;
+  margin: 0;
+}
+
+.footer-logo p {
+  font-size: 1rem;
+  margin: 0;
+  color: #ccc;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.social-icons a {
+  font-size: 1.6rem;
+  color: #eee;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.social-icons a:hover,
+.social-icons a:focus {
+  color: #ff6600;
+  transform: scale(1.1);
+}
+
+.footer-bottom {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #ccc;
+  border-top: 1px solid #333;
+  padding-top: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .footer-logo {
+    text-align: center;
+  }
+}
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    nav {
+      padding: 1rem 1.5rem;
+    }
+    nav ul {
+      gap: 16px;
+      font-size: 0.9rem;
+    }
+    .hero-content {
+      padding-left: 2rem;
+      max-width: 100%;
+    }
+    .hero-content h2 {
+      font-size: 2.5rem;
+    }
+    main {
+      padding: 0 1rem;
+    }
+    .intro {
+      flex-direction: column;
+    }
+    .intro img, .intro-text {
+      flex: 1 1 100%;
+    }
+    .why-us-grid {
+      flex-direction: column;
+      gap: 1.6rem;
+    }
+  }
+  @media (max-width: 480px) {
+  .hero-content h2 {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .hero-content {
+    padding: 1.5rem;
+    align-items: center;
+  }
+}
+
+
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<nav>
+  <div class="logo" aria-label="DoBu Martial Arts logo">
+      <img src="images/logo.jpg" alt="DoBu Martial Arts Logo" />
+      <h1>DoBu Martial Arts</h1>
+    </div>
+  <ul>
+    <li><a href="index.html" aria-current="page">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="classes.html">Classes</a></li>
+    <li><a href="schedule.html">Schedule</a></li>
+    <li><a href="membership.html">Membership</a></li>
+    <li><a href="forum.php" aria-current="page">Forum</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li class="login" aria-label="Login">
+  <a href="login.html" title="Login">
+    <i class="fas fa-user" aria-hidden="true"></i>
+    <span class="sr-only">Login</span>
+  </a>
+</li>
+
+  </ul>
+</nav>
+<main id="main-content" role="main">
+<section class="hero" role="banner" aria-label="Martial arts training video background with call to action">
+  <video autoplay muted loop playsinline>
+    <source src="images/hero.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+  <div class="hero-content">
+    <h2>Master Your Martial Arts Skills</h2>
+    <p>Train with DoBu Martial Arts — expert coaching in Jiu-jitsu, Karate, Muay Thai, and more.</p>
+    <a href="membership.html" class="btn" aria-label="Join Now">Join Now</a>
+  </div>
+</section>
+
+  <section class="intro" aria-label="Introduction to DoBu Martial Arts with a motivational message and image">
+    <img
+      src="https://i.pinimg.com/1200x/ed/39/46/ed3946ca21fe84dad3b10c220ed356a8.jpg"
+      alt="Martial Arts Training"
+    />
+    <div class="intro-text">
+      <h2>Welcome to DoBu Martial Arts</h2>
+      <br>
+      <p>
+        Train with purpose and passion. Learn powerful martial arts techniques
+        guided by our experienced instructors. Step onto the mat and unlock your
+        full potential.
+      </p>
+      <a href="classes.html" class="btn" style="margin-top:1rem; display:inline-block;">View Classes</a>
+    </div>
+  </section>
+
+
+  <section class="why-us" aria-labelledby="why-title">
+    <h3 id="why-title" class="section-title">Why Choose DoBu Martial Arts?</h3>
+    <div class="why-us-grid">
+      <article class="why-card">
+        <img src="https://i.pinimg.com/736x/b3/90/11/b390117588f83dd450868c66ecf34d79.jpg" alt="Expert Coaches" />
+        <h4>Expert Coaches</h4>
+        <p>Highly qualified instructors with years of experience across multiple martial arts disciplines.</p>
+        <a href="about.html#coaches" class="btn" style="margin-top:1rem; display:inline-block; font-size:0.9rem;">Learn More</a>
+      </article>
+      <article class="why-card">
+        <img src="https://i.pinimg.com/736x/49/f1/1a/49f11a2ad7c6ad12581ae5a7ad37bbb2.jpg" alt="Modern Facilities" />
+        <h4>Modern Facilities</h4>
+        <p>Large gym, training mats, sauna, steam room, and more to support your training and recovery.</p>
+        <a href="about.html#coaches" class="btn" style="margin-top:1rem; display:inline-block; font-size:0.9rem;">Learn More</a>
+      </article>
+      <article class="why-card">
+        <img src="https://i.pinimg.com/1200x/57/2e/f8/572ef8c9ab4b1e33fbc88adf2c0bf6d9.jpg" alt="Community Focus" />
+        <h4>Community Focus</h4>
+        <p>Join a friendly community that supports growth, fitness, and martial arts mastery.</p>
+        <a href="about.html#coaches" class="btn" style="margin-top:1rem; display:inline-block; font-size:0.9rem;">Learn More</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="testimonials" aria-label="Customer Testimonials Carousel with Navigation Controls">
+  <h2>What Our Members Say</h2>
+  <div class="testimonial-carousel">
+    <div class="testimonial-track">
+      <div class="testimonial-card">
+        <p>"The energy at DoBu Martial Arts is amazing! Every class pushes me to be better."</p>
+        <h4>– Jordan M., Kickboxing Student</h4>
+      </div>
+      <div class="testimonial-card">
+        <p>"My daughter has grown more confident and disciplined since joining. Highly recommended!"</p>
+        <h4>– Emily R., Parent</h4>
+      </div>
+      <div class="testimonial-card">
+        <p>"As someone new to martial arts, I felt welcomed from day one. The trainers are brilliant."</p>
+        <h4>– Marcus L., Beginner Member</h4>
+      </div>
+      <div class="testimonial-card">
+        <p>"I’ve tried multiple gyms before — none compare to the vibe here at DoBu."</p>
+        <h4>– Daniel S., Elite Member</h4>
+      </div>
+    </div>
+    <button class="testimonial-prev" aria-label="Previous testimonial">&#10094;</button>
+    <button class="testimonial-next" aria-label="Next testimonial">&#10095;</button>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-logo">
+      <h4>DoBu Martial Arts</h4>
+      <p>Empowering strength and confidence.</p>
+    </div>
+    <div class="social-icons" aria-label="Social media links">
+      <a href="#" aria-label="Facebook" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="Instagram" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+      <a href="#" aria-label="YouTube" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 DoBu Martial Arts. All rights reserved.</p>
+  </div>
+</footer>
+<button id="backToTop" aria-label="Back to top" title="Back to top" style="
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #ff6600;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  display: none;
+  z-index: 10000;
+">
+  &#8679;
+</button>
+
+<script>
+  const track = document.querySelector(".testimonial-track");
+  const cards = document.querySelectorAll(".testimonial-card");
+  const prevBtn = document.querySelector(".testimonial-prev");
+  const nextBtn = document.querySelector(".testimonial-next");
+  let currentIndex = 0;
+
+  function updateCarousel() {
+    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+  }
+
+  nextBtn.addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % cards.length;
+    updateCarousel();
+  });
+
+  prevBtn.addEventListener("click", () => {
+    currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+    updateCarousel();
+  });
+
+  // Auto-slide testimonials every 5 seconds
+  setInterval(() => {
+    currentIndex = (currentIndex + 1) % cards.length;
+    updateCarousel();
+  }, 5000);
+</script>
+
+<script>
+  const backToTopBtn = document.getElementById('backToTop');
+
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+      backToTopBtn.style.display = 'block';
+    } else {
+      backToTopBtn.style.display = 'none';
+    }
+  });
+
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
+</body>
+</html>

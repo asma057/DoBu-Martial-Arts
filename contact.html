@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DoBu Martial Arts - Contact Us</title>
+
+<!-- Font Awesome CDN for icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@300;400;500&display=swap');
+
+h1, h2, h3, h4, h5, h6,
+.hero-content h2,
+.section-title,
+.intro-text h2,
+.why-card h4 {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+
+  /* Reset */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+  body {
+    font-family: 'Rajdhani', sans-serif;
+    background: #fdfdfd;
+    color: #222;
+    line-height: 1.5;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  ul {
+    list-style: none;
+  }
+
+  /* Navbar */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    padding: 1rem 3rem;
+    border-bottom: 3px solid #ff6600;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  nav .logo {
+    display: flex;
+    align-items: center;
+  }
+  nav .logo img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 12px;
+    object-fit: cover;
+    border: 3px solid #ff6600;
+  }
+  nav .logo h1 {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #111;
+    letter-spacing: 1.5px;
+  }
+  nav ul {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+  }
+  nav ul li {
+    font-weight: 600;
+    font-size: 1rem;
+    position: relative;
+  }
+  nav ul li a {
+    color: #111;
+    padding: 6px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: color 0.3s ease;
+  }
+  nav ul li a:hover {
+    color: #ff6600;
+  }
+  nav ul li.login a {
+    color: #111;
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+  /* Only icon for login */
+  nav ul li.login a span {
+    display: none;
+  }
+  nav ul li.login a:hover {
+    color: #ff6600;
+  }
+  .sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.contact-hero {
+  background: linear-gradient(to right, #111, #222);
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.contact-hero h1 {
+  font-size: 3rem;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  color: #ff4c00;
+}
+
+.contact-hero p {
+  font-size: 1.2rem;
+  color: #ddd;
+}
+
+.contact-details {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  background: #000;
+  padding: 50px 10%;
+  gap: 20px;
+}
+
+.contact-card {
+  background: #111;
+  color: white;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  flex: 1 1 250px;
+  box-shadow: 0 0 10px rgba(255, 76, 0, 0.3);
+  transition: transform 0.3s;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(255, 76, 0, 0.6);
+}
+
+.contact-card i {
+  font-size: 2rem;
+  color: #ff4c00;
+  margin-bottom: 15px;
+}
+
+.contact-form-section {
+  background: #fff;
+  padding: 60px 10%;
+  text-align: center;
+}
+
+.contact-form-section h2 {
+  font-size: 2.5rem;
+  color: #111;
+  margin-bottom: 30px;
+}
+
+.contact-form {
+  max-width: 700px;
+  margin: auto;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 15px;
+  font-size: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  transition: border-color 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #ff4c00;
+  outline: none;
+}
+
+.contact-form button {
+  background: #ff4c00;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.contact-form button:hover {
+  background: #e64500;
+}
+
+.cta-call-now {
+  display: inline-block;
+  background: #ff4c00;
+  color: #fff;
+  padding: 15px 30px;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 76, 0, 0.4);
+  cursor: pointer;
+  text-decoration: none;
+}
+.cta-call-now:hover {
+  background: #e64500;
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(255, 76, 0, 0.6);
+}
+
+.map-placeholder {
+  background: #111;
+  color: white;
+  padding: 60px 10%;
+  text-align: center;
+}
+
+.map-box {
+  height: 300px;
+  background: #333;
+  border-radius: 10px;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #bbb;
+  font-size: 1rem;
+}
+
+  /* Footer */
+footer {
+  background-color: #222222;
+  color: #eee;
+  padding: 2rem 1rem;
+  font-family: 'Rajdhani', sans-serif;
+  border-top: 3px solid #ff6600;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.footer-logo {
+  text-align: left;
+}
+
+.footer-logo h4 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  color: #ff6600;
+  margin: 0;
+}
+
+.footer-logo p {
+  font-size: 1rem;
+  margin: 0;
+  color: #ccc;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.social-icons a {
+  font-size: 1.6rem;
+  color: #eee;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.social-icons a:hover,
+.social-icons a:focus {
+  color: #ff6600;
+  transform: scale(1.1);
+}
+
+.footer-bottom {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #ccc;
+  border-top: 1px solid #333;
+  padding-top: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .footer-logo {
+    text-align: center;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo" aria-label="DoBu Martial Arts logo">
+    <img src="images/logo.jpg" alt="DoBu Martial Arts Logo" />
+    <h1>DoBu Martial Arts</h1>
+  </div>
+  <ul>
+    <li><a href="index.html" aria-current="page">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="classes.html">Classes</a></li>
+    <li><a href="schedule.html">Schedule</a></li>
+    <li><a href="membership.html">Membership</a></li>
+    <li><a href="forum.php" aria-current="page">Forum</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li class="login" aria-label="Login">
+  <a href="login.html" title="Login">
+    <i class="fas fa-user" aria-hidden="true"></i>
+    <span class="sr-only">Login</span>
+  </a>
+</li>
+
+  </ul>
+</nav>
+
+<!-- CONTACT PAGE MAIN CONTENT -->
+<section class="contact-hero">
+  <h1>Contact Us</h1>
+  <p>We’re here to help! Reach out with any questions or feedback.</p>
+</section>
+
+<section class="contact-details">
+  <div class="contact-card">
+    <i class="fas fa-map-marker-alt"></i>
+    <h3>Our Address</h3>
+    <p>DoBu Martial Arts Training Center,<br>Westbrook Avenue, Metro Heights</p>
+  </div>
+  <div class="contact-card">
+    <i class="fas fa-envelope"></i>
+    <h3>Email Us</h3>
+    <p>support@dobumartialarts.com<br>info@dobumartialarts.com</p>
+  </div>
+  <div class="contact-card">
+    <i class="fas fa-phone-alt"></i>
+    <h3>Call Us</h3>
+    <p>123-456-7890<br>Mon–Sat: 8am–8pm</p>
+  </div>
+</section>
+
+<section class="contact-form-section">
+  <h2>Send Us a Message</h2>
+  <form class="contact-form" method="POST" action="contact.php">
+    <div class="form-group">
+      <input type="text" name="name" placeholder="Your Name" required>
+    </div>
+    <div class="form-group">
+      <input type="email" name="email" placeholder="Your Email" required>
+    </div>
+    <div class="form-group">
+      <input type="text" name="subject" placeholder="Subject" required>
+    </div>
+    <div class="form-group">
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+    </div>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+<section style="text-align:center; padding: 30px 10%;">
+  <h2 style="margin-bottom: 15px;">Need Immediate Assistance?</h2>
+  <a href="tel:1234567890" class="cta-call-now">Call Us Now</a>
+</section>
+<section class="map-placeholder">
+  <h2>Visit Us</h2>
+<iframe 
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24176.202308999705!2d-73.9910837!3d40.7306456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259af31139571%3A0x6a1dc76df379972e!2sMartial%20Arts%20Studio!5e0!3m2!1sen!2sus!4v1721523820996!5m2!1sen!2sus" 
+  width="100%" 
+  height="350" 
+  style="border:0;" 
+  allowfullscreen="" 
+  loading="lazy" 
+  referrerpolicy="no-referrer-when-downgrade">
+</iframe>
+</section>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-logo">
+      <h4>DoBu Martial Arts</h4>
+      <p>Empowering strength and confidence.</p>
+    </div>
+    <div class="social-icons" aria-label="Social media links">
+      <a href="#" aria-label="Facebook" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="Instagram" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+      <a href="#" aria-label="YouTube" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 DoBu Martial Arts. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  function validateForm(event) {
+    event.preventDefault();
+    alert("Thank you! Your message has been sent.");
+    document.querySelector('.contact-form').reset();
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DoBu Martial Arts - Login</title>
+
+<!-- Font Awesome CDN for icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@300;400;500&display=swap');
+
+h1, h2, h3, h4, h5, h6,
+.hero-content h2,
+.section-title,
+.intro-text h2,
+.why-card h4 {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+
+  /* Reset */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+  body {
+    font-family: 'Rajdhani', sans-serif;
+    background: #fdfdfd;
+    color: #222;
+    line-height: 1.5;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  ul {
+    list-style: none;
+  }
+
+  /* Navbar */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    padding: 1rem 3rem;
+    border-bottom: 3px solid #ff6600;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  nav .logo {
+    display: flex;
+    align-items: center;
+  }
+  nav .logo img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 12px;
+    object-fit: cover;
+    border: 3px solid #ff6600;
+  }
+  nav .logo h1 {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #111;
+    letter-spacing: 1.5px;
+  }
+  nav ul {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+  }
+  nav ul li {
+    font-weight: 600;
+    font-size: 1rem;
+    position: relative;
+  }
+  nav ul li a {
+    color: #111;
+    padding: 6px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: color 0.3s ease;
+  }
+  nav ul li a:hover {
+    color: #ff6600;
+  }
+  nav ul li.login a {
+    color: #111;
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+  /* Only icon for login */
+  nav ul li.login a span {
+    display: none;
+  }
+  nav ul li.login a:hover {
+    color: #ff6600;
+  }
+  .sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.container {
+    display: flex;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    max-width: 900px;
+    width: 100%;
+    overflow: hidden;
+    margin: 0 auto; /* Center horizontally */
+  }
+  .left-panel {
+    flex: 1;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+  }
+  .left-panel img {
+    max-width: 80%;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  .right-panel {
+    flex: 1;
+    padding: 48px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .tabs {
+    display: flex;
+    margin-bottom: 32px;
+    border-bottom: 2px solid #eee;
+  }
+  .tab-btn {
+    flex: 1;
+    text-align: center;
+    padding: 14px 0;
+    font-weight: 600;
+    font-size: 18px;
+    cursor: pointer;
+    color: #444;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+  }
+  .tab-btn.active {
+    color: #ff5e00;
+    border-color: #ff5e00;
+  }
+  form {
+    display: none;
+    flex-direction: column;
+  }
+  form.active {
+    display: flex;
+  }
+  label {
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #333;
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    padding: 14px 40px 14px 14px;
+    font-size: 16px;
+    border: 1.5px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    transition: border-color 0.3s ease;
+    width: 100%;
+  }
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="password"]:focus {
+    border-color: #ff5e00;
+    outline: none;
+  }
+  .password-container {
+    position: relative;
+  }
+  .password-toggle {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    color: #666;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .password-toggle svg {
+    width: 24px;
+    height: 24px;
+  }
+  /* Hide the eye-closed icon by default */
+  .password-toggle svg.eye-closed {
+    display: none;
+  }
+  /* When toggled, show eye-closed and hide eye-open */
+  .password-toggle.show-closed svg.eye-open {
+    display: none;
+  }
+  .password-toggle.show-closed svg.eye-closed {
+    display: block;
+  }
+  button.submit-btn {
+    background: #ff5e00;
+    border: none;
+    color: white;
+    font-weight: 700;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  button.submit-btn:hover {
+    background: #e04e00;
+  }
+  @media (max-width: 700px) {
+    .container {
+      flex-direction: column;
+      max-width: 400px;
+    }
+    .left-panel {
+      padding: 30px;
+    }
+    .right-panel {
+      padding: 30px 20px;
+    }
+    .tab-btn {
+      font-size: 16px;
+      padding: 10px 0;
+    }
+  }
+  
+      /* Footer */
+footer {
+  background-color: #222222;
+  color: #eee;
+  padding: 2rem 1rem;
+  font-family: 'Rajdhani', sans-serif;
+  border-top: 3px solid #ff6600;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.footer-logo {
+  text-align: left;
+}
+
+.footer-logo h4 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  color: #ff6600;
+  margin: 0;
+}
+
+.footer-logo p {
+  font-size: 1rem;
+  margin: 0;
+  color: #ccc;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.social-icons a {
+  font-size: 1.6rem;
+  color: #eee;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.social-icons a:hover,
+.social-icons a:focus {
+  color: #ff6600;
+  transform: scale(1.1);
+}
+
+.footer-bottom {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #ccc;
+  border-top: 1px solid #333;
+  padding-top: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .footer-logo {
+    text-align: center;
+  }
+}
+  </style>
+</head>
+<body>
+  <nav>
+  <div class="logo" aria-label="DoBu Martial Arts logo">
+    <img src="images/logo.jpg" alt="DoBu Martial Arts Logo" />
+    <h1>DoBu Martial Arts</h1>
+  </div>
+  <ul>
+    <li><a href="index.html" aria-current="page">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="classes.html">Classes</a></li>
+    <li><a href="schedule.html">Schedule</a></li>
+    <li><a href="membership.html">Membership</a></li>
+    <li><a href="forum.php" aria-current="page">Forum</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li class="login" aria-label="Login">
+  <a href="login.html" title="Login">
+    <i class="fas fa-user" aria-hidden="true"></i>
+    <span class="sr-only">Login</span>
+  </a>
+</li>
+
+  </ul>
+</nav>
+
+<div class="container" role="main" aria-label="Login and Sign Up Forms">
+  <div class="left-panel">
+    <img src="images/logo.jpg" alt="DoBu Martial Arts Logo" />
+  </div>
+  <div class="right-panel">
+    <nav class="tabs" role="tablist" aria-label="Authentication Tabs">
+      <div class="tab-btn active" role="tab" tabindex="0" aria-selected="true" aria-controls="login-form" id="tab-login">Login</div>
+      <div class="tab-btn" role="tab" tabindex="-1" aria-selected="false" aria-controls="signup-form" id="tab-signup">Sign Up</div>
+    </nav>
+
+    <form id="login-form" class="active" novalidate role="tabpanel" aria-labelledby="tab-login" method="POST" action="login.php">
+      <label for="login-email">Email</label>
+      <input type="email" id="login-email" name="email" placeholder="you@example.com" required aria-required="true" autocomplete="username" />
+      
+      <label for="login-password">Password</label>
+      <div class="password-container">
+        <input type="password" id="login-password" name="password" placeholder="Enter your password" required aria-required="true" autocomplete="current-password" />
+        <button type="button" class="password-toggle" aria-label="Toggle password visibility" onclick="togglePassword(this, 'login-password')">
+          <!-- Eye open SVG -->
+          <svg class="eye-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+          <!-- Eye closed SVG (clean slash) -->
+          <svg class="eye-closed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17.94 17.94A10.94 10.94 0 0 1 12 20c-7 0-11-8-11-8a21.85 21.85 0 0 1 5-5"/>
+            <line x1="1" y1="1" x2="23" y2="23"/>
+          </svg>
+        </button>
+      </div>
+      <p style="margin-top: -15px; margin-bottom: 20px; text-align: right;">
+        <a href="forgot-password.html" style="color: #ff5e00; font-weight: 600; text-decoration: none;">Forgot password?</a>
+      </p>
+
+      <!-- Remember me -->
+    <div style="margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+       <input type="checkbox" id="remember-me" name="remember-me" />
+      <label for="remember-me" style="font-weight: 600; cursor: pointer;">Remember me</label>
+    </div>
+
+      <button type="submit" class="submit-btn">Login</button>
+    </form>
+
+    <form id="signup-form" novalidate role="tabpanel" aria-labelledby="tab-signup" method="POST" action="signup.php">
+      <label for="signup-name">Full Name</label>
+      <input type="text" id="signup-name" name="fullname" placeholder="Your full name" required aria-required="true" autocomplete="name" />
+      
+      <label for="signup-email">Email</label>
+      <input type="email" id="signup-email" name="email" placeholder="you@example.com" required aria-required="true" autocomplete="email" />
+      
+      <label for="signup-password">Password</label>
+      <div class="password-container">
+        <input type="password" id="signup-password" name="password" placeholder="Enter password" required aria-required="true" autocomplete="new-password" />
+        <button type="button" class="password-toggle" aria-label="Toggle password visibility" onclick="togglePassword(this, 'signup-password')">
+          <svg class="eye-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+          <svg class="eye-closed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17.94 17.94A10.94 10.94 0 0 1 12 20c-7 0-11-8-11-8a21.85 21.85 0 0 1 5-5"/>
+            <line x1="1" y1="1" x2="23" y2="23"/>
+          </svg>
+        </button>
+      </div>
+
+      <label for="signup-confirm-password">Confirm Password</label>
+      <div class="password-container">
+        <input type="password" id="signup-confirm-password" name="confirm_password" placeholder="Confirm password" required aria-required="true" autocomplete="new-password" />
+        <button type="button" class="password-toggle" aria-label="Toggle password visibility" onclick="togglePassword(this, 'signup-confirm-password')">
+          <svg class="eye-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+          <svg class="eye-closed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17.94 17.94A10.94 10.94 0 0 1 12 20c-7 0-11-8-11-8a21.85 21.85 0 0 1 5-5"/>
+            <line x1="1" y1="1" x2="23" y2="23"/>
+          </svg>
+        </button>
+      </div>
+
+      <button type="submit" class="submit-btn">Sign Up</button>
+    </form>
+  </div>
+</div>  
+
+  <footer>
+  <div class="footer-content">
+    <div class="footer-logo">
+      <h4>DoBu Martial Arts</h4>
+      <p>Empowering strength and confidence.</p>
+    </div>
+    <div class="social-icons" aria-label="Social media links">
+      <a href="#" aria-label="Facebook" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="Instagram" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+      <a href="#" aria-label="YouTube" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 DoBu Martial Arts. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  const tabs = document.querySelectorAll('.tab-btn');
+  const forms = document.querySelectorAll('form');
+
+  tabs.forEach((tab, idx) => {
+    tab.addEventListener('click', () => activateTab(idx));
+    tab.addEventListener('keydown', e => {
+      if(e.key === 'ArrowRight') {
+        e.preventDefault();
+        activateTab((idx + 1) % tabs.length);
+        tabs[(idx + 1) % tabs.length].focus();
+      }
+      else if(e.key === 'ArrowLeft') {
+        e.preventDefault();
+        activateTab((idx - 1 + tabs.length) % tabs.length);
+        tabs[(idx - 1 + tabs.length) % tabs.length].focus();
+      }
+    });
+  });
+
+  function activateTab(index) {
+    tabs.forEach((tab, i) => {
+      tab.classList.toggle('active', i === index);
+      tab.setAttribute('aria-selected', i === index ? 'true' : 'false');
+      tab.tabIndex = i === index ? 0 : -1;
+    });
+    forms.forEach((form, i) => {
+      form.classList.toggle('active', i === index);
+    });
+  }
+
+  function togglePassword(button, inputId) {
+    const input = document.getElementById(inputId);
+    const toggleBtn = button;
+    const isPassword = input.type === 'password';
+    input.type = isPassword ? 'text' : 'password';
+
+    // Toggle icon class
+    toggleBtn.classList.toggle('show-closed', !isPassword);
+  }
+</script>
+
+</body>
+</html>

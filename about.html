@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DoBu Martial Arts - About Us</title>
+
+<!-- Font Awesome CDN for icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@300;400;500&display=swap');
+
+h1, h2, h3, h4, h5, h6,
+.hero-content h2,
+.section-title,
+.intro-text h2,
+.why-card h4 {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+
+  /* Reset */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+  body {
+    font-family: 'Rajdhani', sans-serif;
+    background: #fdfdfd;
+    color: #222;
+    line-height: 1.5;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  ul {
+    list-style: none;
+  }
+
+  /* Navbar */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    padding: 1rem 3rem;
+    border-bottom: 3px solid #ff6600;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  nav .logo {
+    display: flex;
+    align-items: center;
+  }
+  nav .logo img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 12px;
+    object-fit: cover;
+    border: 3px solid #ff6600;
+  }
+  nav .logo h1 {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #111;
+    letter-spacing: 1.5px;
+  }
+  nav ul {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+  }
+  nav ul li {
+    font-weight: 600;
+    font-size: 1rem;
+    position: relative;
+  }
+  nav ul li a {
+    color: #111;
+    padding: 6px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: color 0.3s ease;
+  }
+  nav ul li a:hover {
+    color: #ff6600;
+  }
+  nav ul li.login a {
+    color: #111;
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+  /* Only icon for login */
+  nav ul li.login a span {
+    display: none;
+  }
+  nav ul li.login a:hover {
+    color: #ff6600;
+  }
+  .sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.about-hero {
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://i.pinimg.com/736x/4d/72/82/4d7282cd6017016f59b731d39ca39385.jpg') center/cover no-repeat;
+  color: white;
+  padding: 100px 20px;
+  text-align: center;
+}
+
+.about-hero h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 2px;
+}
+
+.about-hero p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.cta-button {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 14px 36px;
+  background-color: #ff6600;
+  color: #fff;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-radius: 8px;
+  border: 2px solid #ff6600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(255, 102, 0, 0.4);
+  text-align: center;
+  user-select: none;
+}
+
+.cta-button:hover,
+.cta-button:focus {
+  background-color: #ffe6cc;
+  color: #ff6600;
+  transform: scale(1.05);
+  outline: none;
+  box-shadow: 0 6px 14px rgba(255, 102, 0, 0.7);
+}
+
+.cta-button:focus-visible {
+  outline: 3px solid #ff6600;
+  outline-offset: 3px;
+}
+
+.about-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 60px 10%;
+  background-color: #fff;
+  gap: 30px;
+}
+
+.about-section.alt {
+  background-color: #111;
+  color: #fff;
+}
+
+.about-image img {
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.about-text {
+  flex: 1 1 50%;
+  min-width: 280px;
+}
+
+.about-image {
+  flex: 1 1 40%;
+  min-width: 280px;
+}
+
+.about-text h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  font-family: 'Bebas Neue', sans-serif;
+  color: #ff6600;
+}
+
+.about-section.alt .about-text h2 {
+  color: #ff6600;
+}
+
+.about-text p {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+    /* Footer */
+footer {
+  background-color: #222222;
+  color: #eee;
+  padding: 2rem 1rem;
+  font-family: 'Rajdhani', sans-serif;
+  border-top: 3px solid #ff6600;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.footer-logo {
+  text-align: left;
+}
+
+.footer-logo h4 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  color: #ff6600;
+  margin: 0;
+}
+
+.footer-logo p {
+  font-size: 1rem;
+  margin: 0;
+  color: #ccc;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.social-icons a {
+  font-size: 1.6rem;
+  color: #eee;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.social-icons a:hover,
+.social-icons a:focus {
+  color: #ff6600;
+  transform: scale(1.1);
+}
+
+.footer-bottom {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #ccc;
+  border-top: 1px solid #333;
+  padding-top: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .footer-logo {
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    flex-direction: column;
+    padding: 40px 5%;
+    text-align: center;
+  }
+
+  .section img,
+  .section .text {
+    width: 100%;
+  }
+
+  .section img {
+    margin-bottom: 1.5rem;
+  }
+
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .section h2 {
+    font-size: 1.5rem;
+  }
+
+  .section p {
+    font-size: 0.95rem;
+  }
+
+  .section img {
+    width: 90%;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar (unchanged from homepage) -->
+  <nav>
+  <div class="logo" aria-label="DoBu Martial Arts logo">
+    <img src="images/logo.jpg" alt="DoBu Martial Arts Logo" />
+    <h1>DoBu Martial Arts</h1>
+  </div>
+  <ul>
+    <li><a href="index.html" aria-current="page">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="classes.html">Classes</a></li>
+    <li><a href="schedule.html">Schedule</a></li>
+    <li><a href="membership.html">Membership</a></li>
+    <li><a href="forum.php" aria-current="page">Forum</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li class="login" aria-label="Login">
+  <a href="login.html" title="Login">
+    <i class="fas fa-user" aria-hidden="true"></i>
+    <span class="sr-only">Login</span>
+  </a>
+</li>
+
+  </ul>
+</nav>
+
+  <!-- About Hero -->
+<section class="about-hero">
+  <div class="hero-content">
+    <h1>About Us</h1>
+    <p>Empowering individuals through the strength and spirit of martial arts</p>
+    <a href="membership.html" class="cta-button" aria-label="Join DoBu Martial Arts Membership">Join DoBu Today</a>
+  </div>
+</section>
+
+<!-- Mission -->
+<section class="about-section fade-in">
+  <div class="about-text">
+    <h2>Our Mission</h2>
+    <p>At DoBu Martial Arts, we aim to empower individuals through discipline, self-control, and confidence. 
+      Whether you’re a beginner or experienced fighter, our programs help you grow physically and mentally.</p>
+  </div>
+  <div class="about-image">
+    <img src="https://i.pinimg.com/1200x/71/b1/47/71b1479169245482cf773c0a6da12223.jpg" alt="Mission Image" />
+  </div>
+</section>
+
+<!-- Philosophy -->
+<section class="about-section alt fade-in">
+  <div class="about-image">
+    <img src="https://i.pinimg.com/736x/88/cd/73/88cd738f5de5ad177f47cd1a442cd3de.jpg" alt="Philosophy Image" />
+  </div>
+  <div class="about-text">
+    <h2>Our Philosophy</h2>
+    <p>Martial arts is more than self-defense. It's a way of life rooted in tradition, discipline, and respect. 
+      At DoBu, we promote personal growth, inner strength, and lifelong learning — inside and outside the dojo.</p>
+  </div>
+</section>
+
+<!-- Values -->
+<section class="about-section fade-in">
+  <div class="about-text">
+    <h2>Martial Arts Values</h2>
+    <p>Our values include respect, perseverance, humility, and confidence. We teach students to apply 
+      these values in every aspect of life — from the training mat to daily interactions.</p>
+  </div>
+  <div class="about-image">
+    <img src="https://i.pinimg.com/736x/e9/d1/12/e9d11209c9c9e0f6cff36037f5b67b12.jpg" alt="Values Image" />
+  </div>
+</section>
+
+<!-- Facility -->
+<section class="about-section alt fade-in">
+  <div class="about-image">
+    <img src="https://i.pinimg.com/1200x/59/c5/43/59c54302fdbe1627550cdd06a710e408.jpg" alt="Facility Image" />
+  </div>
+  <div class="about-text">
+    <h2>Our Facility</h2>
+    <p>Train in a clean, safe, and professional environment. Our modern facility includes 
+      matted floors, heavy bags, strength equipment, and ample space for every level of martial artist.</p>
+  </div>
+</section>
+
+
+  <footer>
+  <div class="footer-content">
+    <div class="footer-logo">
+      <h4>DoBu Martial Arts</h4>
+      <p>Empowering strength and confidence.</p>
+    </div>
+    <div class="social-icons" aria-label="Social media links">
+      <a href="#" aria-label="Facebook" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="Instagram" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+      <a href="#" aria-label="YouTube" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 DoBu Martial Arts. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  const faders = document.querySelectorAll('.fade-in');
+
+  const appearOptions = {
+    threshold: 0.2,
+    rootMargin: "0px 0px -50px 0px"
+  };
+
+  const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    });
+  }, appearOptions);
+
+  faders.forEach(fade => {
+    appearOnScroll.observe(fade);
+  });
+</script>
+
+</body>
+</html>
